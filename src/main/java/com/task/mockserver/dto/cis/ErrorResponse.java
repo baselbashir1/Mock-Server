@@ -1,4 +1,4 @@
-package com.task.mockserver.dto;
+package com.task.mockserver.dto.cis;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

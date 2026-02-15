@@ -42,4 +42,12 @@ public class Service {
 
         return List.of(response);
     }
+
+    public static ErrorResponse buildFailure() {
+        return new ErrorResponse(
+                "2002",
+                "Application Internal Error",
+                "Fail"
+        );
+    }
 }
