@@ -1,8 +1,8 @@
-package com.task.mockserver.dto;
+package com.task.mockserver.dto.cis;
 
 import lombok.*;
 
-@Getter
+@Data
 @Builder
 @ToString
 @NoArgsConstructor

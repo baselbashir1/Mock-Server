@@ -1,8 +1,8 @@
-package com.task.mockserver.service;
+package com.task.mockserver.service.cis;
 
 import com.task.mockserver.exception.NotFoundException;
-import com.task.mockserver.dto.CustomerSubscriptionResponse;
-import com.task.mockserver.dto.SubscriptionData;
+import com.task.mockserver.dto.cis.CustomerSubscriptionResponse;
+import com.task.mockserver.dto.cis.SubscriptionData;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

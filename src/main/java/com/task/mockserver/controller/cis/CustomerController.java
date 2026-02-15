@@ -1,8 +1,8 @@
-package com.task.mockserver.controller;
+package com.task.mockserver.controller.cis;
 
-import com.task.mockserver.dto.CustomerSubscriptionResponse;
-import com.task.mockserver.dto.SubscriptionData;
-import com.task.mockserver.service.CustomerService;
+import com.task.mockserver.dto.cis.CustomerSubscriptionResponse;
+import com.task.mockserver.dto.cis.SubscriptionData;
+import com.task.mockserver.service.cis.CustomerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
