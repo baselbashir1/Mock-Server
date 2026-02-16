@@ -1,12 +1,13 @@
 package com.task.mockserver.service.cbp;
 
 import com.task.mockserver.dto.cbp.*;
+import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
-@org.springframework.stereotype.Service
-public class Service {
+@Service
+public class CBPService {
     public static List<SubscriptionDetailsResponse> buildResponse() {
         DutyFreeAmount dutyFreeAmount = new DutyFreeAmount();
         dutyFreeAmount.setUnit("K");
@@ -33,8 +34,8 @@ public class Service {
         SubscriptionDetailsResponse response = new SubscriptionDetailsResponse();
         response.setId("0094579689186968162693432801636549265864");
         response.setStatus("active");
-        response.setStartDate(LocalDateTime.parse("2024-08-14T06:54:58"));
-        response.setTerminationDate(LocalDateTime.parse("2024-12-14T06:54:58"));
+        response.setStartDate(new Date());
+        response.setTerminationDate(new Date());
         response.setProductOffering(offering);
         response.setProductPrice(List.of(productPrice));
         response.setProductCharacteristic(List.of(characteristic));

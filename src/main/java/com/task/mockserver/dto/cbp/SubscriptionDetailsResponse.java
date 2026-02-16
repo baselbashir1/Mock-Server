@@ -2,7 +2,7 @@ package com.task.mockserver.dto.cbp;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -13,8 +13,8 @@ import java.util.List;
 public class SubscriptionDetailsResponse {
     private String id;
     private String status;
-    private LocalDateTime startDate;
-    private LocalDateTime terminationDate;
+    private Date startDate;
+    private Date terminationDate;
     private ProductOffering productOffering;
     private List<ProductPrice> productPrice;
     private List<ProductCharacteristic> productCharacteristic;
