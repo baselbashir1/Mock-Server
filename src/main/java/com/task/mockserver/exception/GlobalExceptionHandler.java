@@ -2,7 +2,7 @@ package com.task.mockserver.exception;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.task.mockserver.dto.cis.ErrorResponse;
+import com.task.mockserver.cis.dto.ErrorResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

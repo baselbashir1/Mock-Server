@@ -1,6 +1,5 @@
-package com.task.mockserver.controller.cbp;
+package com.task.mockserver.cbp;
 
-import com.task.mockserver.service.cbp.CBPService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -63,7 +62,6 @@ public class CBPController {
                     "status": "Fail"
                 }
                 """;
-
-        return ResponseEntity.status(HttpStatus.OK).body(CBPService.buildResponse());
+        return ResponseEntity.status(HttpStatus.OK).body(successResponse);
     }
 }

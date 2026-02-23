@@ -1,8 +1,8 @@
-package com.task.mockserver.controller.cis;
+package com.task.mockserver.cis.controller;
 
-import com.task.mockserver.dto.cis.CustomerSubscriptionResponse;
-import com.task.mockserver.dto.cis.SubscriptionData;
-import com.task.mockserver.service.cis.CustomerService;
+import com.task.mockserver.cis.service.CISService;
+import com.task.mockserver.cis.dto.CustomerSubscriptionResponse;
+import com.task.mockserver.cis.dto.SubscriptionData;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +13,9 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/customers")
-public class CustomerController {
+public class CISController {
 
-    private final CustomerService customerService;
+    private final CISService cisService;
 
     @GetMapping("/{ID}/subscriptions")
     public Flux<CustomerSubscriptionResponse> getCustomerSubscriptions(
@@ -23,7 +23,7 @@ public class CustomerController {
             @RequestHeader(value = "transactionId", required = false) String transactionId
     ) {
         log.info("transactionId: {}", transactionId);
-        return customerService.getCustomerSubscriptions(customerId);
+        return cisService.getCustomerSubscriptions(customerId);
     }
 
     @GetMapping("/subscriptions/{subscriptionId}")
@@ -32,6 +32,6 @@ public class CustomerController {
             @RequestHeader(value = "transactionId", required = false) String transactionId
     ) {
         log.info("transactionId: {}", transactionId);
-        return customerService.getSubscriptionById(subscriptionId);
+        return cisService.getSubscriptionById(subscriptionId);
     }
 }

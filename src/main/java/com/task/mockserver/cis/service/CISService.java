@@ -1,8 +1,8 @@
-package com.task.mockserver.service.cis;
+package com.task.mockserver.cis.service;
 
 import com.task.mockserver.exception.NotFoundException;
-import com.task.mockserver.dto.cis.CustomerSubscriptionResponse;
-import com.task.mockserver.dto.cis.SubscriptionData;
+import com.task.mockserver.cis.dto.CustomerSubscriptionResponse;
+import com.task.mockserver.cis.dto.SubscriptionData;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class CustomerService {
+public class CISService {
 
     private static final List<CustomerSubscriptionResponse> DATA = Arrays.asList(
             CustomerSubscriptionResponse.builder()
