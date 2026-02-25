@@ -1,5 +1,6 @@
 package com.task.mockserver.acs.controller;
 
+import com.task.mockserver.acs.dto.ChangeCustomerPinRequest;
 import com.task.mockserver.acs.dto.RefillRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,23 @@ public class ACSController {
                     "currency": "USD",
                     "group": "basel",
                     "amount": 0
+                }
+                """;
+        return ResponseEntity.ok().body(response);
+    }
+
+    @PostMapping(value = "/api/v1.2/SelfSimService/ChangePin", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> changePinCode(@RequestBody ChangeCustomerPinRequest changeCustomerPinRequest) {
+        String response = """
+                {
+                    "data": {
+                        "message": "basel",
+                        "success": true
+                    },
+                    "success": true,
+                    "message": "basel",
+                    "statusCode": "07",
+                    "transactionId": "0123213"
                 }
                 """;
         return ResponseEntity.ok().body(response);
