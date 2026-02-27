@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class ACSController {
 
-    @PostMapping(value = "/api/v1.2/Refill/topUpVoucher", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/v1.2/Refill/topUpVoucher", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getSubscriptionDetails(@RequestHeader String Authorization,
                                                     @RequestBody RefillRequest refillRequest) {
         String response = """
@@ -27,7 +28,7 @@ public class ACSController {
         return ResponseEntity.ok().body(response);
     }
 
-    @PostMapping(value = "/api/v1.2/SelfSimService/ChangePin", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/v1.2/SelfSimService/ChangePin", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> changePinCode(@RequestBody ChangeCustomerPinRequest changeCustomerPinRequest) {
         String response = """
                 {
@@ -44,16 +45,51 @@ public class ACSController {
         return ResponseEntity.ok().body(response);
     }
 
-    @PostMapping(value = "/connect/token", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> token(@RequestParam String client_id,
-                                   @RequestParam String client_secret,
-                                   @RequestParam String scope,
-                                   @RequestParam String grant_type) {
+    @PostMapping(value = "/v1.3/Products/BundleRates", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> bundlesRates() {
         String response = """
                 {
-                  "data": {
-                    "sessionToken": "BASEL_TOKEN"
-                  }
+                    "data": {
+                        "DataRate": [
+                            {
+                                "MinVolume": 0,
+                                "MaxVolume": 0,
+                                "Rate": 0
+                            }
+                        ],
+                        "VoiceOnnet": [
+                            {
+                                "MinVolume": 0,
+                                "MaxVolume": 0,
+                                "Rate": 0
+                            }
+                        ],
+                        "VoiceOffnet": [
+                            {
+                                "MinVolume": 0,
+                                "MaxVolume": 0,
+                                "Rate": 0
+                            }
+                        ],
+                        "SmsOnnet": [
+                            {
+                                "MinVolume": 0,
+                                "MaxVolume": 0,
+                                "Rate": 0
+                            }
+                        ],
+                        "SmsOffnet": [
+                            {
+                                "MinVolume": 0,
+                                "MaxVolume": 0,
+                                "Rate": 0
+                            }
+                        ]
+                    },
+                    "success": true,
+                    "message": "basel",
+                    "statusCode": "888",
+                    "transactionId": "hgugiughuyh"
                 }
                 """;
         return ResponseEntity.ok().body(response);
