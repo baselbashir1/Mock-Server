@@ -2,21 +2,19 @@ package com.task.mockserver.acs.controller;
 
 import com.task.mockserver.acs.dto.ChangeCustomerPinRequest;
 import com.task.mockserver.acs.dto.RefillRequest;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import com.task.mockserver.acs.dto.NotificationReceiverRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Slf4j
 @RestController
 @RequestMapping("/api")
-@RequiredArgsConstructor
 public class ACSController {
 
     @PostMapping(value = "/v1.2/Refill/topUpVoucher", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getSubscriptionDetails(@RequestHeader String Authorization,
-                                                    @RequestBody RefillRequest refillRequest) {
+                                                    @RequestBody RefillRequest request) {
         String response = """
                 {
                     "serialNumber": "283437298374",
@@ -29,7 +27,7 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.2/SelfSimService/ChangePin", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> changePinCode(@RequestBody ChangeCustomerPinRequest changeCustomerPinRequest) {
+    public ResponseEntity<?> changePinCode(@RequestBody ChangeCustomerPinRequest request) {
         String response = """
                 {
                     "data": {
@@ -90,6 +88,68 @@ public class ACSController {
                     "message": "basel",
                     "statusCode": "888",
                     "transactionId": "hgugiughuyh"
+                }
+                """;
+        return ResponseEntity.ok().body(response);
+    }
+
+    @PostMapping(value = "/v1.2/Notifications/receiver", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> registerNotificationReceiver(@RequestBody NotificationReceiverRequest request) {
+        String response = """
+                {
+                    "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "msisdn": "23108548",
+                        "partyBMsisdn": "asdasd",
+                        "appId": "add"
+                    },
+                    "success": true,
+                    "message": "basel",
+                    "statusCode": "0000",
+                    "transactionId": "basel"
+                }
+                """;
+//        return ResponseEntity.ok().body(response);
+//        return ResponseEntity.badRequest().body(response);
+//        return ResponseEntity.internalServerError().body(response);
+//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        return ResponseEntity.noContent().build();
+//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
+
+    @PutMapping(value = "/v1.2/Notifications/receiver/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> registerNotificationReceiver(@PathVariable String id, @RequestBody NotificationReceiverRequest request) {
+        String response = """
+                {
+                    "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "msisdn": "23108548",
+                        "partyBMsisdn": "asdasd",
+                        "appId": "update"
+                    },
+                    "success": true,
+                    "message": "basel",
+                    "statusCode": "0000",
+                    "transactionId": "basel"
+                }
+                """;
+        return ResponseEntity.ok().body(response);
+    }
+
+    @DeleteMapping(value = "/v1.2/Notifications/receiver/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> deleteNotificationReceiver(@PathVariable String id) {
+        String response = """
+                {
+                    "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "msisdn": "23108548",
+                        "partyBMsisdn": "asdasd",
+                        "appId": "delete"
+                    },
+                    "success": true,
+                    "message": "basel",
+                    "statusCode": "0000",
+                    "transactionId": "basel"
                 }
                 """;
         return ResponseEntity.ok().body(response);
