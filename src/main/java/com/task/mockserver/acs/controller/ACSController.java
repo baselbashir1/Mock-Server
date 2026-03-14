@@ -1,8 +1,6 @@
 package com.task.mockserver.acs.controller;
 
-import com.task.mockserver.acs.dto.ChangeCustomerPinRequest;
-import com.task.mockserver.acs.dto.RefillRequest;
-import com.task.mockserver.acs.dto.NotificationReceiverRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class ACSController {
 
     @PostMapping(value = "/v1.2/Refill/topUpVoucher", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getSubscriptionDetails(@RequestHeader String Authorization,
-                                                    @RequestBody RefillRequest request) {
+    public ResponseEntity<?> getSubscriptionDetails(@RequestHeader String Authorization, HttpServletRequest request) {
         String response = """
                 {
                     "serialNumber": "283437298374",
@@ -27,7 +24,7 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.2/SelfSimService/ChangePin", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> changePinCode(@RequestBody ChangeCustomerPinRequest request) {
+    public ResponseEntity<?> changePinCode(HttpServletRequest request) {
         String response = """
                 {
                     "data": {
@@ -94,7 +91,7 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.2/Notifications/receiver", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> registerNotificationReceiver(@RequestBody NotificationReceiverRequest request) {
+    public ResponseEntity<?> registerNotificationReceiver(HttpServletRequest request) {
         String response = """
                 {
                     "data": {
@@ -113,12 +110,12 @@ public class ACSController {
 //        return ResponseEntity.badRequest().body(response);
 //        return ResponseEntity.internalServerError().body(response);
 //        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        return ResponseEntity.noContent().build();
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 //        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
     @PutMapping(value = "/v1.2/Notifications/receiver/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> registerNotificationReceiver(@PathVariable String id, @RequestBody NotificationReceiverRequest request) {
+    public ResponseEntity<?> registerNotificationReceiver(@PathVariable String id, HttpServletRequest request) {
         String response = """
                 {
                     "data": {
@@ -153,5 +150,41 @@ public class ACSController {
                 }
                 """;
         return ResponseEntity.ok().body(response);
+    }
+
+    @PostMapping(value = "/v1.3/Provision/Subscribe", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> subscribeFreeBonus(HttpServletRequest request) {
+        String response = """
+                {
+                    "data": {
+                        "product": {
+                            "productName": "30LD-80MB 24hrs",
+                            "cost": 0,
+                            "productId": 368,
+                            "categoryId": 228,
+                            "categoryName": "",
+                            "description": "Get 80MB of data to browse the internet valid for 24hrs.",
+                            "validityDays": 1,
+                            "type": "Data",
+                            "validityHours": 24,
+                            "costCurrency": {
+                                "USD": 0,
+                                "LRD": 30
+                            }
+                        },
+                        "expiryDate": "2026-02-13T15:55:32.3052778+00:00"
+                    },
+                    "success": true,
+                    "message": "Congratulations! You have received 80MB to browse the internet. Welcome to the new Liberia",
+                    "statusCode": 0,
+                    "transactionId": 881202865646894300
+                }
+                """;
+        return ResponseEntity.ok().body(response);
+//        return ResponseEntity.badRequest().body(response);
+//        return ResponseEntity.internalServerError().body(response);
+//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 }
