@@ -187,4 +187,30 @@ public class ACSController {
 //        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 //        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
+
+    @PostMapping(value = "/v1.3/Products/BundlePrice", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getBundlePrice(HttpServletRequest request) {
+        String response = """
+                {
+                    "data": {
+                        "dataCost": 0,
+                        "voiceOnnetCost": 0,
+                        "voiceOffnetCost": 0,
+                        "smsOnnetCost": 0,
+                        "smsOffnetCost": 0,
+                        "totalCost": 0
+                    },
+                    "success": true,
+                    "message": "string",
+                    "statusCode": 0,
+                    "transactionId": 0
+                }
+                """;
+        return ResponseEntity.ok().body(response);
+//        return ResponseEntity.badRequest().body(response);
+//        return ResponseEntity.internalServerError().body(response);
+//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
 }
