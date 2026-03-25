@@ -193,15 +193,71 @@ public class ACSController {
         String response = """
                 {
                     "data": {
-                        "dataCost": 0,
-                        "voiceOnnetCost": 0,
-                        "voiceOffnetCost": 0,
-                        "smsOnnetCost": 0,
-                        "smsOffnetCost": 0,
-                        "totalCost": 0
+                        "dataCost": 10,
+                        "voiceOnnetCost": 10,
+                        "voiceOffnetCost": 10,
+                        "smsOnnetCost": 10,
+                        "smsOffnetCost": 10,
+                        "totalCost": 80
                     },
                     "success": true,
                     "message": "string",
+                    "statusCode": 0,
+                    "transactionId": 0
+                }
+                """;
+        return ResponseEntity.ok().body(response);
+//        return ResponseEntity.badRequest().body(response);
+//        return ResponseEntity.internalServerError().body(response);
+//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
+
+    @PostMapping(value = "/v1.2/Transfer", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> transferDataGifting(HttpServletRequest request) {
+        String response = """
+                {
+                    "data": {
+                        "sender": "23114234234",
+                        "receiver": "23114235577",
+                        "amount": 580,
+                        "packageTransferred": {
+                            "productName": "basel-prd",
+                            "cost": 780,
+                            "productId": 1230,
+                            "categoryId": 4320,
+                            "categoryName": "basel-crt",
+                            "description": "dasdasdsad",
+                            "validityDays": 10,
+                            "type": "test",
+                            "validityHours": 900,
+                            "costCurrency": {
+                                "additionalProp1": 0,
+                                "additionalProp2": 0,
+                                "additionalProp3": 0
+                            }
+                        },
+                        "packageReceived": {
+                            "productName": "basel-prd",
+                            "cost": 230,
+                            "productId": 2031,
+                            "categoryId": 40,
+                            "categoryName": "basel-crt",
+                            "description": "sasd",
+                            "validityDays": 3,
+                            "type": "grrr",
+                            "validityHours": 550,
+                            "costCurrency": {
+                                "additionalProp1": 0,
+                                "additionalProp2": 0,
+                                "additionalProp3": 0
+                            }
+                        },
+                        "transferExpiry": "2026-02-12T08:29:48.561Z"
+                    },
+                    "success": true,
+                    "message": "success",
                     "statusCode": 0,
                     "transactionId": 0
                 }
