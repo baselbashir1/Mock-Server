@@ -106,12 +106,7 @@ public class ACSController {
                     "transactionId": "basel"
                 }
                 """;
-//        return ResponseEntity.ok().body(response);
-//        return ResponseEntity.badRequest().body(response);
-//        return ResponseEntity.internalServerError().body(response);
-//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        return ResponseEntity.ok().body(response);
     }
 
     @PutMapping(value = "/v1.2/Notifications/receiver/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -181,11 +176,6 @@ public class ACSController {
                 }
                 """;
         return ResponseEntity.ok().body(response);
-//        return ResponseEntity.badRequest().body(response);
-//        return ResponseEntity.internalServerError().body(response);
-//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
     @PostMapping(value = "/v1.3/Products/BundlePrice", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -207,15 +197,10 @@ public class ACSController {
                 }
                 """;
         return ResponseEntity.ok().body(response);
-//        return ResponseEntity.badRequest().body(response);
-//        return ResponseEntity.internalServerError().body(response);
-//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
     @PostMapping(value = "/v1.2/Transfer", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> transferDataGifting(HttpServletRequest request) {
+    public ResponseEntity<?> dataGifting(HttpServletRequest request) {
         String response = """
                 {
                     "data": {
@@ -262,7 +247,9 @@ public class ACSController {
                     "transactionId": 0
                 }
                 """;
+
         return ResponseEntity.ok().body(response);
+//        return ResponseEntity.ok().body(null);
 //        return ResponseEntity.badRequest().body(response);
 //        return ResponseEntity.internalServerError().body(response);
 //        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
