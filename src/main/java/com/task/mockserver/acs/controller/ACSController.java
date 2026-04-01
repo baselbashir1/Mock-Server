@@ -247,7 +247,89 @@ public class ACSController {
                     "transactionId": 0
                 }
                 """;
+        return ResponseEntity.ok().body(response);
+//        return ResponseEntity.ok().body(null);
+//        return ResponseEntity.badRequest().body(response);
+//        return ResponseEntity.internalServerError().body(response);
+//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
 
+    @PostMapping("/v1.3/Linked/AddDevice")
+    public ResponseEntity<?> addMiFiNumber(HttpServletRequest request) {
+        String response = """
+                {
+                    "data": {
+                        "linkedId": 0,
+                        "msisdn": "string",
+                        "deviceNumber": "string",
+                        "deviceType": "string",
+                        "dateLinked": "2026-02-12T07:45:28.616Z",
+                        "lastModified": "2026-02-12T07:45:28.616Z"
+                    },
+                    "success": true,
+                    "message": "string",
+                    "statusCode": 0,
+                    "transactionId": 0
+                }
+                """;
+        return ResponseEntity.ok().body(response);
+//        return ResponseEntity.ok().body(null);
+//        return ResponseEntity.badRequest().body(response);
+//        return ResponseEntity.internalServerError().body(response);
+//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
+
+    @DeleteMapping("/v1.3/Linked/DeleteDevice")
+    public ResponseEntity<?> removeMiFiNumber(HttpServletRequest request) {
+        String response = """
+                {
+                    "data": {
+                        "linkedId": 0,
+                        "msisdn": "string",
+                        "deviceNumber": "string",
+                        "deviceType": "string",
+                        "dateLinked": "2026-02-12T07:50:14.057Z",
+                        "lastModified": "2026-02-12T07:50:14.057Z"
+                    },
+                    "success": true,
+                    "message": "string",
+                    "statusCode": 0,
+                    "transactionId": 0
+                }
+                """;
+        return ResponseEntity.ok().body(response);
+//        return ResponseEntity.ok().body(null);
+//        return ResponseEntity.badRequest().body(response);
+//        return ResponseEntity.internalServerError().body(response);
+//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
+
+    @PostMapping("/v1.3/Linked/GetDevices")
+    public ResponseEntity<?> fetchMiFiNumber(HttpServletRequest request) {
+        String response = """
+                {
+                     "data": [
+                         {
+                             "linkedId": 0,
+                             "msisdn": "string",
+                             "deviceNumber": "string",
+                             "deviceType": "string",
+                             "dateLinked": "2026-02-12T07:51:05.897Z",
+                             "lastModified": "2026-02-12T07:51:05.897Z"
+                         }
+                     ],
+                     "success": true,
+                     "message": "string",
+                     "statusCode": 0,
+                     "transactionId": 0
+                 }
+                """;
         return ResponseEntity.ok().body(response);
 //        return ResponseEntity.ok().body(null);
 //        return ResponseEntity.badRequest().body(response);
