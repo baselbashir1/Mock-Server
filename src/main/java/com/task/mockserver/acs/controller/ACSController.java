@@ -1,7 +1,6 @@
 package com.task.mockserver.acs.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -256,7 +255,7 @@ public class ACSController {
 //        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
-    @PostMapping("/v1.3/Linked/AddDevice")
+    @PostMapping(value = "/v1.3/Linked/AddDevice", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addMiFiNumber(HttpServletRequest request) {
         String response = """
                 {
@@ -283,7 +282,7 @@ public class ACSController {
 //        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
-    @DeleteMapping("/v1.3/Linked/DeleteDevice")
+    @DeleteMapping(value = "/v1.3/Linked/DeleteDevice", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> removeMiFiNumber(HttpServletRequest request) {
         String response = """
                 {
@@ -310,7 +309,7 @@ public class ACSController {
 //        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
-    @PostMapping("/v1.3/Linked/GetDevices")
+    @PostMapping(value = "/v1.3/Linked/GetDevices", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> fetchMiFiNumber(HttpServletRequest request) {
         String response = """
                 {
