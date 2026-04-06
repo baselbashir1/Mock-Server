@@ -1,6 +1,7 @@
 package com.task.mockserver.acs.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -275,11 +276,11 @@ public class ACSController {
                 """;
         return ResponseEntity.ok().body(response);
 //        return ResponseEntity.ok().body(null);
-//        return ResponseEntity.badRequest().body(response);
-//        return ResponseEntity.internalServerError().body(response);
-//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 //        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        return ResponseEntity.badRequest().body(response);
+//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 //        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+//        return ResponseEntity.internalServerError().body(response);
     }
 
     @DeleteMapping(value = "/v1.3/Linked/DeleteDevice", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -302,11 +303,11 @@ public class ACSController {
                 """;
         return ResponseEntity.ok().body(response);
 //        return ResponseEntity.ok().body(null);
-//        return ResponseEntity.badRequest().body(response);
-//        return ResponseEntity.internalServerError().body(response);
-//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 //        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        return ResponseEntity.badRequest().body(response);
+//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 //        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+//        return ResponseEntity.internalServerError().body(response);
     }
 
     @PostMapping(value = "/v1.3/Linked/GetDevices", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -331,10 +332,33 @@ public class ACSController {
                 """;
         return ResponseEntity.ok().body(response);
 //        return ResponseEntity.ok().body(null);
-//        return ResponseEntity.badRequest().body(response);
-//        return ResponseEntity.internalServerError().body(response);
-//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 //        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        return ResponseEntity.badRequest().body(response);
+//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 //        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+//        return ResponseEntity.internalServerError().body(response);
+    }
+
+    @PostMapping(value = "/v1.2/SelfSimService/SwapSim", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> swapSim(HttpServletRequest request) {
+        String response = """
+                {
+                    "data": {
+                        "message": "string",
+                        "success": true
+                    },
+                    "success": true,
+                    "message": "string",
+                    "statusCode": 0,
+                    "transactionId": 0
+                }
+                """;
+        return ResponseEntity.ok().body(response);
+//        return ResponseEntity.ok().body(null);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        return ResponseEntity.badRequest().body(response);
+//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+//        return ResponseEntity.internalServerError().body(response);
     }
 }
