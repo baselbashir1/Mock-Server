@@ -361,4 +361,25 @@ public class ACSController {
 //        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 //        return ResponseEntity.internalServerError().body(response);
     }
+
+    @PostMapping(value = "/v1.3/Provision/SubscribeMmp", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> activateMyPackage(HttpServletRequest request) {
+        String response = """
+                {
+                    "data": {
+                    },
+                    "success": true,
+                    "message": "string",
+                    "statusCode": 0,
+                    "transactionId": 0
+                }
+                """;
+        return ResponseEntity.ok().body(response);
+//        return ResponseEntity.ok().body(null);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        return ResponseEntity.badRequest().body(response);
+//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+//        return ResponseEntity.internalServerError().body(response);
+    }
 }
