@@ -179,7 +179,7 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.3/Products/BundlePrice", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getBundlePrice(HttpServletRequest request) {
+    public ResponseEntity<?> calculateBundlePrice(HttpServletRequest request) {
         String response = """
                 {
                     "data": {
@@ -367,11 +367,54 @@ public class ACSController {
         String response = """
                 {
                     "data": {
+                        "success": true,
+                        "message": "Congratulations! You have successfully purchased $23.45-100mins-100mins-100sms-100sms-100mb. Dial *124# to check your balance",
+                        "statusCode": 200,
+                        "transactionId": 123456,
+                        "extraData": null,
+                        "externalData": "",
+                        "product": {
+                            "fetchedParameters": false,
+                            "productId": 1510,
+                            "productName": "$23.45-100mins-100mins-100sms-100sms-100mb",
+                            "categoryId": 286,
+                            "menuCode": 1,
+                            "message": "You have successfully purchased {ProductName} non-expiry bundle. Dial *124# to check your balance",
+                            "pamid": 0,
+                            "daid": 0,
+                            "offerid": 1838,
+                            "validity": 365,
+                            "maxRetries": 1000000,
+                            "appId": "MMP",
+                            "maCostDollarsThirdParty": 0,
+                            "maCostDollars": 23.45,
+                            "maCostLRD": 0.00,
+                            "menuPosition": 0,
+                            "active": true,
+                            "balanceMessageFormat": "You have {balance} on your Make your own package. Visit myMTN app to buy more bundle",
+                            "confirmationMessageFormat": "",
+                            "messageUSSD": "Congratulations! You have successfully purchased {ProductName}. Dial *124# to check your balance",
+                            "maxValidityExt": 356,
+                            "exchangeRate": 0,
+                            "productProvisioningDetails": null,
+                            "reportingName": "MakeMyPackage",
+                            "requireConfirmation": true,
+                            "productType": "3",
+                            "isTransferable": false,
+                            "canExtend": true,
+                            "smsCode": null,
+                            "allowedChannels": [
+                                "USSD",
+                                "FlytxtPromoSms"
+                            ]
+                        },
+                        "expiryForProvisioning": null,
+                        "ucipOutputs": []
                     },
                     "success": true,
-                    "message": "string",
+                    "message": "Congratulations! You have successfully purchased $23.45-100mins-100mins-100sms-100sms-100mb. Dial *124# to check your balance",
                     "statusCode": 0,
-                    "transactionId": 0
+                    "transactionId": null
                 }
                 """;
         return ResponseEntity.ok().body(response);
