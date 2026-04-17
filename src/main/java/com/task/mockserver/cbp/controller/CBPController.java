@@ -1,6 +1,5 @@
 package com.task.mockserver.cbp.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -63,8 +62,7 @@ public class CBPController {
     }
 
     @PostMapping(value = "/product", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> subscribe(@RequestHeader(value = "correlationId", required = false) String correlationId,
-                                       HttpServletRequest request) {
+    public ResponseEntity<?> subscribe(@RequestHeader(value = "correlationId", required = false) String correlationId) {
         String successResponse = """
                 {
                     "id": "00315373991483613184",

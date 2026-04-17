@@ -1,6 +1,5 @@
 package com.task.mockserver.acs.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class ACSController {
 
     @PostMapping(value = "/v1.2/Refill/topUpVoucher", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getSubscriptionDetails(@RequestHeader String Authorization, HttpServletRequest request) {
+    public ResponseEntity<?> getSubscriptionDetails(@RequestHeader String Authorization) {
         String response = """
                 {
                     "serialNumber": "283437298374",
@@ -24,7 +23,7 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.2/SelfSimService/ChangePin", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> changePinCode(HttpServletRequest request) {
+    public ResponseEntity<?> changePinCode() {
         String response = """
                 {
                     "data": {
@@ -91,7 +90,7 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.2/Notifications/receiver", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> registerNotificationReceiver(HttpServletRequest request) {
+    public ResponseEntity<?> registerNotificationReceiver() {
         String response = """
                 {
                     "data": {
@@ -110,7 +109,7 @@ public class ACSController {
     }
 
     @PutMapping(value = "/v1.2/Notifications/receiver/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> registerNotificationReceiver(@PathVariable String id, HttpServletRequest request) {
+    public ResponseEntity<?> registerNotificationReceiver(@PathVariable String id) {
         String response = """
                 {
                     "data": {
@@ -148,38 +147,38 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.3/Provision/Subscribe", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> subscribeFreeBonus(HttpServletRequest request) {
+    public ResponseEntity<?> subscribeFreeBonus() {
         String response = """
                 {
                     "data": {
                         "product": {
-                            "productName": "30LD-80MB 24hrs",
-                            "cost": 0,
-                            "productId": 368,
-                            "categoryId": 228,
+                            "productName": "$0.35-100MB-1Day",
+                            "cost": 0.35,
+                            "productId": 15,
+                            "categoryId": 158,
                             "categoryName": "",
-                            "description": "Get 80MB of data to browse the internet valid for 24hrs.",
+                            "description": "You have selected $0.35-100MB Package valid 24hrs.",
                             "validityDays": 1,
                             "type": "Data",
                             "validityHours": 24,
                             "costCurrency": {
-                                "USD": 0,
-                                "LRD": 30
+                                "USD": 0.35,
+                                "LRD": 63.62
                             }
                         },
-                        "expiryDate": "2026-02-13T15:55:32.3052778+00:00"
+                        "expiryDate": "2026-04-23T09:38:15"
                     },
                     "success": true,
-                    "message": "Congratulations! You have received 80MB to browse the internet. Welcome to the new Liberia",
+                    "message": "You have successfully extended your $0.35-100MB-1Day valid till 4/23/2026 at 9:38 AM.",
                     "statusCode": 0,
-                    "transactionId": 881202865646894300
+                    "transactionId": 887289233951815329
                 }
                 """;
         return ResponseEntity.ok().body(response);
     }
 
     @PostMapping(value = "/v1.3/Products/BundlePrice", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> calculateBundlePrice(HttpServletRequest request) {
+    public ResponseEntity<?> calculateBundlePrice() {
         String response = """
                 {
                     "data": {
@@ -200,7 +199,7 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.2/Transfer", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> dataGifting(HttpServletRequest request) {
+    public ResponseEntity<?> dataGifting() {
         String response = """
                 {
                     "data": {
@@ -257,7 +256,7 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.3/Linked/AddDevice", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> addMiFiNumber(HttpServletRequest request) {
+    public ResponseEntity<?> addMiFiNumber() {
         String response = """
                 {
                     "data": {
@@ -284,7 +283,7 @@ public class ACSController {
     }
 
     @DeleteMapping(value = "/v1.3/Linked/DeleteDevice", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> removeMiFiNumber(HttpServletRequest request) {
+    public ResponseEntity<?> removeMiFiNumber() {
         String response = """
                 {
                     "data": {
@@ -311,7 +310,7 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.3/Linked/GetDevices", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> fetchMiFiNumber(HttpServletRequest request) {
+    public ResponseEntity<?> fetchMiFiNumber() {
         String response = """
                 {
                      "data": [
@@ -340,7 +339,7 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.2/SelfSimService/SwapSim", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> swapSim(HttpServletRequest request) {
+    public ResponseEntity<?> swapSim() {
         String response = """
                 {
                     "data": {
@@ -363,7 +362,7 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.3/Provision/SubscribeMmp", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> activateMyPackage(HttpServletRequest request) {
+    public ResponseEntity<?> activateMyPackage() {
         String response = """
                 {
                     "data": {
@@ -413,8 +412,8 @@ public class ACSController {
                     },
                     "success": true,
                     "message": "Congratulations! You have successfully purchased $23.45-100mins-100mins-100sms-100sms-100mb. Dial *124# to check your balance",
-                    "statusCode": 0,
-                    "transactionId": null
+                    "statusCode": 200,
+                    "transactionId": 123456
                 }
                 """;
         return ResponseEntity.ok().body(response);
