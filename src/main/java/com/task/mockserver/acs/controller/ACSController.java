@@ -175,12 +175,6 @@ public class ACSController {
                 }
                 """;
         return ResponseEntity.ok().body(response);
-//        return ResponseEntity.ok().body(null);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        return ResponseEntity.badRequest().body(response);
-//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-//        return ResponseEntity.internalServerError().body(response);
     }
 
     @PostMapping(value = "/v1.3/Products/BundlePrice", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -208,57 +202,49 @@ public class ACSController {
     public ResponseEntity<?> dataGifting() {
         String response = """
                 {
-                    "data": {
-                        "sender": "23114234234",
-                        "receiver": "23114235577",
-                        "amount": 580,
-                        "packageTransferred": {
-                            "productName": "basel-prd",
-                            "cost": 780,
-                            "productId": 1230,
-                            "categoryId": 4320,
-                            "categoryName": "basel-crt",
-                            "description": "dasdasdsad",
-                            "validityDays": 10,
-                            "type": "test",
-                            "validityHours": 900,
-                            "costCurrency": {
-                                "additionalProp1": 0,
-                                "additionalProp2": 0,
-                                "additionalProp3": 0
-                            }
-                        },
-                        "packageReceived": {
-                            "productName": "basel-prd",
-                            "cost": 230,
-                            "productId": 2031,
-                            "categoryId": 40,
-                            "categoryName": "basel-crt",
-                            "description": "sasd",
-                            "validityDays": 3,
-                            "type": "grrr",
-                            "validityHours": 550,
-                            "costCurrency": {
-                                "additionalProp1": 0,
-                                "additionalProp2": 0,
-                                "additionalProp3": 0
-                            }
-                        },
-                        "transferExpiry": "2026-02-12T08:29:48.561Z"
-                    },
-                    "success": true,
-                    "message": "success",
-                    "statusCode": 0,
-                    "transactionId": 0
-                }
+                     "data": {
+                         "sender": "231887289233",
+                         "receiver": "231889529877",
+                         "amount": 200,
+                         "packageTransferred": {
+                             "productName": "$0.35-100MB-1Day",
+                             "cost": 0.35,
+                             "productId": 15,
+                             "categoryId": 158,
+                             "categoryName": "",
+                             "description": "You have selected $0.35-100MB Package valid 24hrs.",
+                             "validityDays": 1,
+                             "type": "Data",
+                             "validityHours": 24,
+                             "costCurrency": {
+                                 "USD": 0.35,
+                                 "LRD": 63.62
+                             }
+                         },
+                         "packageReceived": {
+                             "productName": "$0.35-100MB-1Day",
+                             "cost": 0,
+                             "productId": 15,
+                             "categoryId": 0,
+                             "categoryName": "",
+                             "description": null,
+                             "validityDays": 0,
+                             "type": "Unknown",
+                             "validityHours": 0,
+                             "costCurrency": {
+                                 "USD": 0,
+                                 "LRD": 0
+                             }
+                         },
+                         "transferExpiry": "2026-05-31T11:11:32"
+                     },
+                     "success": true,
+                     "message": "Transfer Successful",
+                     "statusCode": 200,
+                     "transactionId": 741258
+                 }
                 """;
         return ResponseEntity.ok().body(response);
-//        return ResponseEntity.ok().body(null);
-//        return ResponseEntity.badRequest().body(response);
-//        return ResponseEntity.internalServerError().body(response);
-//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
     @PostMapping(value = "/v1.3/Linked/AddDevice", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -280,12 +266,6 @@ public class ACSController {
                 }
                 """;
         return ResponseEntity.ok().body(response);
-//        return ResponseEntity.ok().body(null);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        return ResponseEntity.badRequest().body(response);
-//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-//        return ResponseEntity.internalServerError().body(response);
     }
 
     @DeleteMapping(value = "/v1.3/Linked/DeleteDevice", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -307,12 +287,6 @@ public class ACSController {
                 }
                 """;
         return ResponseEntity.ok().body(response);
-//        return ResponseEntity.ok().body(null);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        return ResponseEntity.badRequest().body(response);
-//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-//        return ResponseEntity.internalServerError().body(response);
     }
 
     @PostMapping(value = "/v1.3/Linked/GetDevices", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -336,12 +310,6 @@ public class ACSController {
                  }
                 """;
         return ResponseEntity.ok().body(response);
-//        return ResponseEntity.ok().body(null);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        return ResponseEntity.badRequest().body(response);
-//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-//        return ResponseEntity.internalServerError().body(response);
     }
 
     @PostMapping(value = "/v1.2/SelfSimService/SwapSim", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -359,12 +327,6 @@ public class ACSController {
                 }
                 """;
         return ResponseEntity.ok().body(response);
-//        return ResponseEntity.ok().body(null);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        return ResponseEntity.badRequest().body(response);
-//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-//        return ResponseEntity.internalServerError().body(response);
     }
 
     @PostMapping(value = "/v1.3/Provision/SubscribeMmp", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -423,12 +385,6 @@ public class ACSController {
                 }
                 """;
         return ResponseEntity.ok().body(response);
-//        return ResponseEntity.ok().body(null);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        return ResponseEntity.badRequest().body(response);
-//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-//        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-//        return ResponseEntity.internalServerError().body(response);
     }
 
     @PostMapping(value = "/v1.2/SelfSimService/UpdateAlternateNumber", produces = MediaType.APPLICATION_JSON_VALUE)
