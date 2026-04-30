@@ -109,7 +109,7 @@ public class ACSController {
     }
 
     @PutMapping(value = "/v1.2/Notifications/receiver/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> registerNotificationReceiver(@PathVariable String id) {
+    public ResponseEntity<?> updateNotificationReceiver(@PathVariable String id) {
         String response = """
                 {
                     "data": {
