@@ -1,4 +1,4 @@
-package com.task.mockserver.acs.controller;
+package com.task.mockserver.acs;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

@@ -1,4 +1,4 @@
-package com.task.mockserver.acs.controller;
+package com.task.mockserver.acs;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

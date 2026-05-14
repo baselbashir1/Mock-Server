@@ -1,4 +1,4 @@
-package com.task.mockserver.cbp.controller;
+package com.task.mockserver.cbp;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
