@@ -331,7 +331,7 @@ public class ACSController {
 
     @PostMapping(value = "/v1.3/Provision/SubscribeMmp", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> activateMyPackage() {
-        String response = """
+        String successResponse = """
                 {
                     "data": {
                         "success": true,
@@ -384,7 +384,62 @@ public class ACSController {
                     "transactionId": 123456
                 }
                 """;
-        return ResponseEntity.ok().body(response);
+
+        String failureResponse = """
+                {
+                    "data": {
+                        "success": false,
+                        "message": "You do not have sufficient balance to activate this service.",
+                        "statusCode": 200,
+                        "transactionId": 123456,
+                        "extraData": null,
+                        "externalData": "",
+                        "product": {
+                            "fetchedParameters": false,
+                            "productId": 1510,
+                            "productName": "MakeMyPackage",
+                            "categoryId": 286,
+                            "menuCode": 1,
+                            "message": "You have successfully purchased {ProductName} non-expiry bundle. Dial *124# to check your balance",
+                            "pamid": 0,
+                            "daid": 0,
+                            "offerid": 1838,
+                            "validity": 365,
+                            "maxRetries": 1000000,
+                            "appId": "MMP",
+                            "maCostDollarsThirdParty": 0,
+                            "maCostDollars": 23.45,
+                            "maCostLRD": 0.00,
+                            "menuPosition": 0,
+                            "active": true,
+                            "balanceMessageFormat": "You have {balance} on your Make your own package. Visit myMTN app to buy more bundle",
+                            "confirmationMessageFormat": "",
+                            "messageUSSD": "Congratulations! You have successfully purchased {ProductName}. Dial *124# to check your balance",
+                            "maxValidityExt": 356,
+                            "exchangeRate": 0,
+                            "productProvisioningDetails": null,
+                            "reportingName": "MakeMyPackage",
+                            "requireConfirmation": true,
+                            "productType": "3",
+                            "isTransferable": false,
+                            "canExtend": true,
+                            "smsCode": null,
+                            "allowedChannels": [
+                                "USSD",
+                                "FlytxtPromoSms",
+                                "OPTASIA-LOAN-ENABLED"
+                            ]
+                        },
+                        "expiryForProvisioning": null,
+                        "ucipOutputs": []
+                    },
+                    "success": false,
+                    "message": "You do not have sufficient balance to activate this service.",
+                    "statusCode": 0,
+                    "transactionId": null
+                }
+                """;
+        return ResponseEntity.ok().body(successResponse);
     }
 
     @PostMapping(value = "/v1.2/SelfSimService/UpdateAlternateNumber", produces = MediaType.APPLICATION_JSON_VALUE)
