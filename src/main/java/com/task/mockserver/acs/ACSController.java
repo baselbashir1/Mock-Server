@@ -200,7 +200,7 @@ public class ACSController {
 
     @PostMapping(value = "/v1.2/Transfer", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> dataGifting() {
-        String response = """
+        String successResponse = """
                 {
                      "data": {
                          "sender": "231887289233",
@@ -244,7 +244,17 @@ public class ACSController {
                      "transactionId": 741258
                  }
                 """;
-        return ResponseEntity.ok().body(response);
+
+        String failureResponse = """
+                {
+                    "data": null,
+                    "success": false,
+                    "message": "Error Transferring Product ",
+                    "statusCode": 400,
+                    "transactionId": 741258
+                }
+                """;
+        return ResponseEntity.ok().body(successResponse);
     }
 
     @PostMapping(value = "/v1.3/Linked/AddDevice", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -439,7 +449,16 @@ public class ACSController {
                     "transactionId": null
                 }
                 """;
-        return ResponseEntity.ok().body(successResponse);
+
+        String notEligibleResponse = """
+                {
+                    "message": "Subscriber Not Eligible for a Make My Package bundle",
+                    "success": false,
+                    "statusCode": "406",
+                    "transactionId": "0"
+                }
+                """;
+        return ResponseEntity.ok().body(notEligibleResponse);
     }
 
     @PostMapping(value = "/v1.2/SelfSimService/UpdateAlternateNumber", produces = MediaType.APPLICATION_JSON_VALUE)
