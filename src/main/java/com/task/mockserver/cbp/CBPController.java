@@ -6,10 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/tmf-api/productManagement/v4")
 public class CBPController {
 
-    @GetMapping(value = "/product", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/tmf-api/productManagement/v4/product", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getSubscriptionDetails(
             @RequestParam(value = "realizingResource.id", required = false) String realizingResourceId,
             @RequestParam(value = "productOffering.id", required = false) String productOfferingId,
@@ -61,7 +60,7 @@ public class CBPController {
         return ResponseEntity.status(HttpStatus.OK).body(successResponse);
     }
 
-    @PostMapping(value = "/product", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/tmf-api/productManagement/v4/product", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> subscribe(@RequestHeader(value = "correlationId", required = false) String correlationId) {
         String successResponse = """
                 {
@@ -114,6 +113,18 @@ public class CBPController {
                     "status": "Fail"
                 }
                 """;
+        return ResponseEntity.ok(successResponse);
+    }
+
+    @PatchMapping(value = "/sm-api/productManagement/v1/getTransactionStatus", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> transactionStatus() {
+        String successResponse = """
+                {
+                    "id": "00315373991483613184",
+                    "status": "pending"
+                }
+                """;
+
         return ResponseEntity.ok(successResponse);
     }
 }
