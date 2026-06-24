@@ -26,4 +26,21 @@ public class ECWController {
                 """;
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
+
+    @PostMapping(value = "/madapi/debit", produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<?> debit(@RequestBody String body) {
+        String response = """
+                <?xml version='1.0' encoding='utf-8'?>
+                <soap:Envelope xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>
+                    <soap:Body>
+                        <soap:Fault>
+                            <faultcode>soap:Client</faultcode>
+                            <faultstring>The requested operation was rejected. Please consult with your administrator.Your support ID is: 3268612619274546442</faultstring>
+                            <detail/>
+                        </soap:Fault>
+                    </soap:Body>
+                </soap:Envelope>
+                """;
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
 }
