@@ -12,7 +12,7 @@ public class EWPController {
     public ResponseEntity<?> payment(@RequestBody String body) {
         System.out.println(body);
 
-        String response = """
+        String successResponse = """
                 <?xml version="1.0" encoding="UTF-8"?>
                 <ns10:paymentresponse xmlns:ns10="http://www.ericsson.com/em/emm/serviceprovider/v1_1/frontend" xmlns:fic="http://www.ericsson.com/em/emm/financial/v1_2/common" xmlns:ns11="http://www.ericsson.com/em/emm/financial/v1_2" xmlns:ns12="http://www.ericsson.com/em/emm/financial/v1_0" xmlns:ns13="http://www.ericsson.com/em/emm/financial/v1_1" xmlns:ns4="http://www.ericsson.com/em/emm/financial/v1_0/common" xmlns:ns5="http://www.ericsson.com/em/emm/v2_1/common" xmlns:ns6="http://www.ericsson.com/em/emm/financial/v1_1/common" xmlns:ns8="http://www.ericsson.com/em/emm/v1_1/common" xmlns:op="http://www.ericsson.com/em/emm/v1_0/common" xmlns:spc="http://www.ericsson.com/em/emm/serviceprovider/v1_0/common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
                     <fee>
@@ -22,6 +22,19 @@ public class EWPController {
                     <transactionid>538195</transactionid>
                 </ns10:paymentresponse>
                 """;
-        return new ResponseEntity<>(response, HttpStatus.OK);
+
+        String badRequestResponse = """
+                <?xml version='1.0' encoding='utf-8'?>
+                <soap:Envelope xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>
+                    <soap:Body>
+                        <soap:Fault>
+                            <faultcode>soap:Client</faultcode>
+                            <faultstring>The requested operation was rejected. Please consult with your administrator.Your support ID is: 3268612619274546442</faultstring>
+                            <detail/>
+                        </soap:Fault>
+                    </soap:Body>
+                </soap:Envelope>
+                """;
+        return new ResponseEntity<>(badRequestResponse, HttpStatus.BAD_REQUEST);
     }
 }
