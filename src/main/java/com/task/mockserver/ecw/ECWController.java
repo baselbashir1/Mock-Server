@@ -12,7 +12,16 @@ public class ECWController {
 
     @PostMapping(value = "/madapi/getbalance", produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<?> getBalance(@RequestBody String body) {
-        String response = """
+        String successResponse = """
+                <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+                <ns2:getbalancerequest xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_2">
+                    <fri>FRI:260765647419/MSISDN</fri>
+                    <includereservations>false</includereservations>
+                    <quoteid>null</quoteid>
+                </ns2:getbalancerequest>
+                """;
+
+        String badRequestResponse = """
                 <?xml version='1.0' encoding='utf-8'?>
                 <soap:Envelope xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>
                     <soap:Body>
@@ -24,12 +33,12 @@ public class ECWController {
                     </soap:Body>
                 </soap:Envelope>
                 """;
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(badRequestResponse, HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping(value = "/madapi/debit", produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<?> debit(@RequestBody String body) {
-        String response = """
+        String badRequestResponse = """
                 <?xml version='1.0' encoding='utf-8'?>
                 <soap:Envelope xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>
                     <soap:Body>
@@ -41,6 +50,6 @@ public class ECWController {
                     </soap:Body>
                 </soap:Envelope>
                 """;
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(badRequestResponse, HttpStatus.BAD_REQUEST);
     }
 }
