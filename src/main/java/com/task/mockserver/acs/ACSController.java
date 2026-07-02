@@ -483,4 +483,26 @@ public class ACSController {
 //        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 //        return ResponseEntity.internalServerError().body(response);
     }
+
+    @PostMapping(value = "/v1.3/Products/Balances", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> checkBalance() {
+        String response = """
+                {
+                    "data": {
+                        "dataBalance": 7764119,
+                        "voiceOnnet": 0,
+                        "voiceOffnet": 0,
+                        "smsOnnet": 0,
+                        "smsOffnet": 0,
+                        "international": 0,
+                        "money": 0
+                    },
+                    "success": true,
+                    "message": "You have 7764119MB, 0Mins MTN to MTN, 0Mins MTN to other networks, 0SMS MTN to MTN and 0SMS to other networks",
+                    "statusCode": 200,
+                    "transactionId": 112345
+                }
+                """;
+        return ResponseEntity.ok().body(response);
+    }
 }
