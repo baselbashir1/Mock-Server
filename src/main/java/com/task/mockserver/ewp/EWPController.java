@@ -37,4 +37,19 @@ public class EWPController {
                 """;
         return new ResponseEntity<>(badRequestResponse, HttpStatus.BAD_REQUEST);
     }
+
+    @PostMapping(value = "/madapi/gettransactionstatus", produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<?> getTransactionStatus(@RequestBody String body) {
+        System.out.println(body);
+
+        String response = """
+                <ns0:gettransactionstatusresponse xmlns:ns0="http://www.ericsson.com/em/emm/financial/v1_2">
+                    <financialtransactionid>54840730</financialtransactionid>
+                    <status>SUCCESSFUL</status>
+                    <providertransactionid>CBP-54840730-0</providertransactionid>
+                </ns0:gettransactionstatusresponse>
+                """;
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }

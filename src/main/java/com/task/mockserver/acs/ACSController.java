@@ -505,4 +505,31 @@ public class ACSController {
                 """;
         return ResponseEntity.ok().body(response);
     }
+
+    @PostMapping(value = "/v1.3/Products/Bundles", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> productBundles() {
+        String response = """
+                {
+                    "data": [
+                        {
+                            "productName": "",
+                            "cost": 0,
+                            "productId": 0,
+                            "categoryId": 0,
+                            "categoryName": "",
+                            "description": "",
+                            "validityDays": 0,
+                            "type": "Content",
+                            "validityHours": 0,
+                            "costCurrency": {}
+                        }
+                    ],
+                    "success": true,
+                    "message": "",
+                    "statusCode": 0,
+                    "transactionId": null
+                }
+                """;
+        return ResponseEntity.ok().body(response);
+    }
 }
