@@ -532,4 +532,44 @@ public class ACSController {
                 """;
         return ResponseEntity.ok().body(response);
     }
+
+    @GetMapping(value = "/v1.3/Balance/all/{msisdn}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> retrieveAllSubscriberBalances(@PathVariable String msisdn) {
+        String response = """
+                {
+                    "data": {
+                        "msisdn": "231880600175",
+                        "data": {
+                            "formattedBalance": "7.40 TB",
+                            "rawBalance": 7763128,
+                            "expiryDate": "2038-01-19T11:33:28"
+                        },
+                        "voice": {
+                            "onNet": 0,
+                            "offNet": 0,
+                            "international": 0,
+                            "onNetExpiryDate": null,
+                            "offNetExpiryDate": null,
+                            "intlExpiryDate": null
+                        },
+                        "sms": {
+                            "onNet": 0,
+                            "offNet": 0,
+                            "onNetExpiryDate": null,
+                            "offNetExpiryDate": null
+                        },
+                        "airtime": {
+                            "balance": 0,
+                            "currency": "USD",
+                            "lastUpdated": "2026-07-07T09:11:29.0518964Z"
+                        }
+                    },
+                    "success": true,
+                    "message": "Success",
+                    "statusCode": 0,
+                    "transactionId": null
+                }
+                """;
+        return ResponseEntity.ok().body(response);
+    }
 }
