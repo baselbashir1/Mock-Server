@@ -5,6 +5,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api")
 public class ACSController {
@@ -485,7 +488,16 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.3/Products/Balances", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> checkBalance() {
+    public ResponseEntity<?> checkBalance(@RequestBody Map<String, Object> requestBody) {
+
+        if (requestBody.containsKey("type") && requestBody.get("type") == null) {
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("success", false);
+            errorResponse.put("message", "type parameter should be null or not provided");
+            errorResponse.put("statusCode", 400);
+            return ResponseEntity.badRequest().body(errorResponse);
+        }
+
         String response = """
                 {
                     "data": {
