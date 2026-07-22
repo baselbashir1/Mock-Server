@@ -148,4 +148,10 @@ public class DCLMController {
                 """;
         return ResponseEntity.ok().body(response);
     }
+
+    @GetMapping(value = "/productInventoryManagement/v1/product/QRcode", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getQRCodeWithMSISDN(@RequestParam String publicIdentifier) {
+        String response = "iVBORw0KGgoAAAANSUhEUgAAAMgAAAEsAQAAAACugcETAAABw0lEQVR4Xu2W0WotIQxFBX8rkF8P+FsBu1fm3p62tG+m9MGcweNkCUazjTP2Tza+Ot7tkkuwSy7BLrkEu+R3SYwxY670vWLY5LWFLD0xUy5fWHk6iKZf4WkzFYrz2kbCXExBWC/ZO9Wox6guomfl3GGz+h929ChBEpWyx75o5xzB0v8nz/95zpPwmNrQcPU0JO0V21FCzgBhZqwyKojzRDLkVFXuTF0boPNEu6kI+Ef3ciOQBiKfDhRqVLurXrSQVecWjdTJgrWQJ22DmdVK/ZW68wTxWZW9HBJlIswOwvp8EYRSuKnphNVAciISMme1oySwgXBPlM4pFp8yd5jImZwok1DUViFvICU/5I7iVxJJC1lM6wgjqEhaeA8JddGgygSZI44ewhpVy9lX6t9TYs8ToBMCF60W+6TuPOE211OKH6bEaUgHYU/lwWVljq+BPKUuVfX0Hx9r4lESdYIHZUKK562HYBRWXRpV/Ph1kOA48Q1ERdp8dDH2PFFH6tBauTGY/6Wds6SSlV6Dakf7SCk+UDwna/cRY6UoHuU3kc3szhcrKtn0OwgKkYdAqiK9dvQs+d4uuQS75BLskkuwS/4CeQMzoA41dIELgwAAAABJRU5ErkJggg==";
+        return ResponseEntity.ok().body(response);
+    }
 }
