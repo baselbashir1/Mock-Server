@@ -161,7 +161,7 @@ public class DCLMController {
         System.out.println(body);
         System.out.println(authorization);
 
-        String response = """
+        String successResponse = """
                 {
                     "id": "PI285835",
                     "href": "https://dclm-mmp.cluster1.devtestlab2.tecnotree.com/partyInteractionManagement/v1/partyInteraction/PI285835",
@@ -479,6 +479,17 @@ public class DCLMController {
                     "retryable": false
                 }
                 """;
-        return ResponseEntity.ok().body(response);
+
+        String badRequestResponse = """
+                {
+                    "code": "CIS-1727",
+                    "reason": "Bad Request",
+                    "message": "There is no active or suspended or softSuspended Product with publicIdentifier 260769073810",
+                    "timestamp": "2026-08-11T15:02:43.584Z",
+                    "relatedError": [],
+                    "createdDate": "2026-08-11T15:02:43.584Z"
+                }
+                """;
+        return ResponseEntity.ok().body(successResponse);
     }
 }
