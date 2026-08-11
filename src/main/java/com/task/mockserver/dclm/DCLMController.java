@@ -490,6 +490,140 @@ public class DCLMController {
                     "createdDate": "2026-08-11T15:02:43.584Z"
                 }
                 """;
-        return ResponseEntity.ok().body(successResponse);
+
+        String newResponse = """
+                {
+                    "id": "PI154206",
+                    "href": "https://bss-uat.mtnzambia.co.zm/partyInteractionManagement/v1/partyInteraction/PI154206",
+                    "customFields": {},
+                    "interactionDate": {
+                        "startDateTime": "2026-08-11T17:29:43.394Z"
+                    },
+                    "reason": "01",
+                    "status": "draft",
+                    "direction": "inbound",
+                    "relatedParty": [
+                        {
+                            "role": "isl",
+                            "validFor": [
+                                {
+                                    "startDateTime": "2026-08-11T17:29:43.344Z",
+                                    "endDateTime": "2026-08-11T17:29:43.344Z"
+                                }
+                            ],
+                            "id": "Madapi",
+                            "@referredType": "SSOUser",
+                            "name": "Madapi",
+                            "contactMedium": [
+                                {
+                                    "medium": {
+                                        "type": "EmailAddress",
+                                        "verified": false,
+                                        "emailAddress": "Madapi@mtn.com"
+                                    },
+                                    "type": "EmailAddress",
+                                    "preferred": false
+                                }
+                            ]
+                        }
+                    ],
+                    "interactionItem": [
+                        {
+                            "id": "II1",
+                            "item": {
+                                "customFields": {},
+                                "@type": "ProductOrder",
+                                "orderItem": [
+                                    {
+                                        "id": "OI1",
+                                        "transferDeposit": false,
+                                        "product": {
+                                            "publicIdentifier": "8964502000293416052",
+                                            "_internal": {}
+                                        },
+                                        "orderItem": [
+                                            {
+                                                "id": "OI2",
+                                                "transferDeposit": false,
+                                                "product": {
+                                                    "characteristic": [
+                                                        {
+                                                            "name": "SIMNumber",
+                                                            "value": "8964502000291343631",
+                                                            "@type": "SIM"
+                                                        }
+                                                    ],
+                                                    "_internal": {}
+                                                },
+                                                "modifiable": true
+                                            }
+                                        ],
+                                        "modifiable": true
+                                    }
+                                ],
+                                "channel": [
+                                    {
+                                        "name": "ISL",
+                                        "role": "interactioncreation",
+                                        "id": "isl",
+                                        "@referredType": "Channel",
+                                        "@type": "ISL"
+                                    }
+                                ],
+                                "relatedParty": [
+                                    {
+                                        "role": "isl",
+                                        "validFor": [
+                                            {
+                                                "startDateTime": "2026-08-11T17:29:43.344Z",
+                                                "endDateTime": "2026-08-11T17:29:43.344Z"
+                                            }
+                                        ],
+                                        "id": "Madapi",
+                                        "@referredType": "SSOUser",
+                                        "name": "Madapi",
+                                        "contactMedium": [
+                                            {
+                                                "medium": {
+                                                    "type": "EmailAddress",
+                                                    "verified": false,
+                                                    "emailAddress": "Madapi@mtn.com"
+                                                },
+                                                "type": "EmailAddress",
+                                                "preferred": false
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "modifiable": true,
+                                "cancellable": true
+                            }
+                        }
+                    ],
+                    "channel": [
+                        {
+                            "name": "ISL",
+                            "role": "interactioncreation",
+                            "id": "isl",
+                            "@referredType": "Channel",
+                            "@type": "ISL"
+                        }
+                    ],
+                    "productId": [],
+                    "publicIdentifier": [
+                        "8964502000293416052"
+                    ],
+                    "createdDate": "2026-08-11T17:29:43.408Z",
+                    "modifiedDate": "2026-08-11T17:29:44.480Z",
+                    "_internal": {},
+                    "version": 0,
+                    "@baseType": "PartyInteraction",
+                    "@type": "SimChangeRequest",
+                    "@schemaLocation": "https://bss-uat.mtnzambia.co.zm/partyInteractionManagement/v1/partyInteraction/schema",
+                    "retryable": false,
+                    "retryableCount": 0
+                }
+                """;
+        return ResponseEntity.ok().body(newResponse);
     }
 }
