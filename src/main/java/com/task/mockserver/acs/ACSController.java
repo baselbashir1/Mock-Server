@@ -1,6 +1,5 @@
 package com.task.mockserver.acs;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,7 @@ public class ACSController {
 
     @PostMapping(value = "/v1.2/Refill/topUpVoucher", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getSubscriptionDetails(@RequestHeader String Authorization) {
-        String response = """
+        String successResponse = """
                 {
                     "serialNumber": "283437298374",
                     "currency": "USD",
@@ -22,7 +21,47 @@ public class ACSController {
                     "amount": 0
                 }
                 """;
-        return ResponseEntity.ok().body(response);
+
+        String alreadyUsedResponse = """
+                {
+                    "success": false,
+                    "responseCode": 108,
+                    "responseMessage": "",
+                    "failureReason": "Voucher already used by another subscriber",
+                    "serialNumber": null,
+                    "currency": null,
+                    "group": null,
+                    "amount": 0
+                }
+                """;
+
+        String badRequestResponse = """
+                {
+                    "success": false,
+                    "responseCode": 400,
+                    "responseMessage": "Invalid voucher code",
+                    "failureReason": "Voucher code must be 13 characters",
+                    "serialNumber": null,
+                    "currency": null,
+                    "group": null,
+                    "amount": 0
+                }
+                """;
+
+        String invalidVoucher = """
+                {
+                    "success": false,
+                    "responseCode": 119,
+                    "responseMessage": "",
+                    "failureReason": "Invalid voucher code",
+                    "serialNumber": null,
+                    "currency": null,
+                    "group": null,
+                    "amount": 0
+                }
+                """;
+
+        return ResponseEntity.ok().body(successResponse);
     }
 
     @PostMapping(value = "/v1.2/SelfSimService/ChangePin", produces = MediaType.APPLICATION_JSON_VALUE)
