@@ -13,12 +13,25 @@ public class ACSController {
 
     @PostMapping(value = "/v1.2/Refill/topUpVoucher", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getSubscriptionDetails(@RequestHeader String Authorization) {
-        String successResponse = """
+        String oldResponse = """
                 {
                     "serialNumber": "283437298374",
                     "currency": "USD",
                     "group": "basel",
                     "amount": 0
+                }
+                """;
+
+        String successResponse = """
+                {
+                    "success": true,
+                    "responseCode": 1,
+                    "responseMessage": "",
+                    "failureReason": null,
+                    "serialNumber": "1374650809",
+                    "currency": "USD",
+                    "group": "14",
+                    "amount": 1
                 }
                 """;
 
