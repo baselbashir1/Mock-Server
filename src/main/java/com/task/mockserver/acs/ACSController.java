@@ -74,7 +74,7 @@ public class ACSController {
                 }
                 """;
 
-        return ResponseEntity.ok().body(successResponse);
+        return ResponseEntity.ok().body(invalidVoucher);
     }
 
     @PostMapping(value = "/v1.2/SelfSimService/ChangePin", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -677,5 +677,635 @@ public class ACSController {
                 }
                 """;
         return ResponseEntity.ok().body(newResponse);
+    }
+
+    @PostMapping(value = "/v1.2/Provision/Subscribe", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> subscribe() {
+        String successResponse = """
+                {
+                    "data": [
+                        {
+                            "productName": "$30-Prestige",
+                            "cost": 30,
+                            "productId": 1324,
+                            "categoryId": 162,
+                            "categoryName": "Prestige bundles(30 days)",
+                            "description": "21GB,550mins-MTN,500mins-all networks,50mins-Int'l + more",
+                            "validityDays": 30,
+                            "type": "Combo",
+                            "validityHours": 720,
+                            "costCurrency": {
+                                "USD": 30,
+                                "LRD": 5492.50
+                            }
+                        },
+                        {
+                            "productName": "$1-70mins-50MB-5Days",
+                            "cost": 1,
+                            "productId": 98,
+                            "categoryId": 22,
+                            "categoryName": "DYO",
+                            "description": "Get 60mins to call MTN numbers, 10 all-net mins to call all networks, 50MB Data + Unlimited SMS to all MTN numbers. Press 1 to confirm 2 to cancel.",
+                            "validityDays": 5,
+                            "type": "Combo",
+                            "validityHours": 120,
+                            "costCurrency": {
+                                "USD": 1,
+                                "LRD": 183.08
+                            }
+                        },
+                        {
+                            "productName": "$5-13GB",
+                            "cost": 5,
+                            "productId": 20,
+                            "categoryId": 6,
+                            "categoryName": "Weekly",
+                            "description": "You have selected $5 - 13GB Package valid 7 days.",
+                            "validityDays": 7,
+                            "type": "Data",
+                            "validityHours": 168,
+                            "costCurrency": {
+                                "USD": 5,
+                                "LRD": 915.42
+                            }
+                        },
+                        {
+                            "productName": "50LD-16mins-24hrs",
+                            "cost": 0.27,
+                            "productId": 243,
+                            "categoryId": 229,
+                            "categoryName": "Voice Bundle",
+                            "description": "Get 12 mins calls to MTN numbers,4mins calls to all networks, 10MB Data and 50 SMS onnet for 24hrs",
+                            "validityDays": 1,
+                            "type": "Voice",
+                            "validityHours": 24,
+                            "costCurrency": {
+                                "USD": 0.27,
+                                "LRD": 50
+                            }
+                        },
+                        {
+                            "productName": "$2-1.8GB-10Days",
+                            "cost": 2,
+                            "productId": 19,
+                            "categoryId": 6,
+                            "categoryName": "Weekly",
+                            "description": "You have selected $2-1.8GB Package valid 7 days.",
+                            "validityDays": 10,
+                            "type": "Data",
+                            "validityHours": 240,
+                            "costCurrency": {
+                                "USD": 2,
+                                "LRD": 366.17
+                            }
+                        },
+                        {
+                            "productName": "$20-25GB",
+                            "cost": 20,
+                            "productId": 22,
+                            "categoryId": 6,
+                            "categoryName": "Weekly",
+                            "description": "You have selected $20-25GB Package valid 7 days.",
+                            "validityDays": 7,
+                            "type": "Data",
+                            "validityHours": 168,
+                            "costCurrency": {
+                                "USD": 20,
+                                "LRD": 3661.67
+                            }
+                        },
+                        {
+                            "productName": "$0.35-100MB-1Day",
+                            "cost": 0.35,
+                            "productId": 15,
+                            "categoryId": 158,
+                            "categoryName": "Daily",
+                            "description": "You have selected $0.35-100MB Package valid 24hrs.",
+                            "validityDays": 1,
+                            "type": "Data",
+                            "validityHours": 24,
+                            "costCurrency": {
+                                "USD": 0.35,
+                                "LRD": 64.08
+                            }
+                        },
+                        {
+                            "productName": "190LD-70mins-5days",
+                            "cost": 1.04,
+                            "productId": 1663,
+                            "categoryId": 229,
+                            "categoryName": "Voice Bundle",
+                            "description": "Get 70mins On net and 20mins all net plus 50MB data and Unlimited SMS valid for 5 days",
+                            "validityDays": 5,
+                            "type": "Voice",
+                            "validityHours": 120,
+                            "costCurrency": {
+                                "USD": 1.04,
+                                "LRD": 190
+                            }
+                        },
+                        {
+                            "productName": "200LD-50mins-7days",
+                            "cost": 1.09,
+                            "productId": 11,
+                            "categoryId": 229,
+                            "categoryName": "Voice Bundle",
+                            "description": "Get 40 mins calls to MTN numbers, 10mins allnet calls to all networks plus 200MB data and 1000 SMS valid for 7 days",
+                            "validityDays": 7,
+                            "type": "Voice",
+                            "validityHours": 168,
+                            "costCurrency": {
+                                "USD": 1.09,
+                                "LRD": 200
+                            }
+                        },
+                        {
+                            "productName": "1000LD-355mins-30days",
+                            "cost": 5.46,
+                            "productId": 1664,
+                            "categoryId": 229,
+                            "categoryName": "Voice Bundle",
+                            "description": "Get 300 mins calls to MTN numbers, 55mins all  networks, 50MB Data and Unlimited SMS valid for 30 days",
+                            "validityDays": 30,
+                            "type": "Voice",
+                            "validityHours": 720,
+                            "costCurrency": {
+                                "USD": 5.46,
+                                "LRD": 1000
+                            }
+                        },
+                        {
+                            "productName": "$10-Prestige",
+                            "cost": 10,
+                            "productId": 348,
+                            "categoryId": 162,
+                            "categoryName": "Prestige bundles(30 days)",
+                            "description": "6GB,200mins-MTN,80mins-all networks + more",
+                            "validityDays": 30,
+                            "type": "Combo",
+                            "validityHours": 720,
+                            "costCurrency": {
+                                "USD": 10,
+                                "LRD": 1830.84
+                            }
+                        },
+                        {
+                            "productName": "$5-179mins-30Days",
+                            "cost": 5,
+                            "productId": 1661,
+                            "categoryId": 327,
+                            "categoryName": "FreedomVoice",
+                            "description": "Get 179 mins calls to MTN numbers. Press 1 to confirm 0 to cancel.",
+                            "validityDays": 30,
+                            "type": "Voice",
+                            "validityHours": 720,
+                            "costCurrency": {
+                                "USD": 5,
+                                "LRD": 915.42
+                            }
+                        },
+                        {
+                            "productName": "$0.20-14mins-10MB-1Day",
+                            "cost": 0.20,
+                            "productId": 1444,
+                            "categoryId": 22,
+                            "categoryName": "DYO",
+                            "description": "Get 14 mins to calls MTN numbers,10MB Data + 15 SMS to all MTN numbers. Press 1 to confirm 2 to cancel.",
+                            "validityDays": 1,
+                            "type": "Combo",
+                            "validityHours": 24,
+                            "costCurrency": {
+                                "USD": 0.20,
+                                "LRD": 36.62
+                            }
+                        },
+                        {
+                            "productName": "30LD-8mins-24hrs",
+                            "cost": 0.16,
+                            "productId": 1675,
+                            "categoryId": 229,
+                            "categoryName": "Voice Bundle",
+                            "description": "Get 8 mins calls to MTN numbers and 20 SMS valid for 24hrs.",
+                            "validityDays": 1,
+                            "type": "Voice",
+                            "validityHours": 24,
+                            "costCurrency": {
+                                "USD": 0.16,
+                                "LRD": 30
+                            }
+                        },
+                        {
+                            "productName": "$5-Prestige",
+                            "cost": 5,
+                            "productId": 347,
+                            "categoryId": 162,
+                            "categoryName": "Prestige bundles(30 days)",
+                            "description": "2.05GB,200mins-MTN,50mins-all networks,20mins-Int'l + more",
+                            "validityDays": 30,
+                            "type": "Combo",
+                            "validityHours": 720,
+                            "costCurrency": {
+                                "USD": 5,
+                                "LRD": 915.42
+                            }
+                        },
+                        {
+                            "productName": "$0.50-21mins-4mins-20sms-20mb-24hrs",
+                            "cost": 0.50,
+                            "productId": 1518,
+                            "categoryId": 288,
+                            "categoryName": "DYOFallback",
+                            "description": "You have less than $1.00, activate 0.50cent offer to get 21mins (On-net), 4mins(ofnet), 20sms(0nnet) and 20mb(data) valid 24HRS. Please enter 1 to confirm and 2 to cancel",
+                            "validityDays": 1,
+                            "type": "Combo",
+                            "validityHours": 24,
+                            "costCurrency": {
+                                "USD": 0.50,
+                                "LRD": 91.54
+                            }
+                        },
+                        {
+                            "productName": "10LD-2mins-24hrs",
+                            "cost": 0.05,
+                            "productId": 365,
+                            "categoryId": 229,
+                            "categoryName": "Voice Bundle",
+                            "description": "Get 2 mins calls to MTN numbers and 5 SMS valid for 24hrs.",
+                            "validityDays": 1,
+                            "type": "Voice",
+                            "validityHours": 24,
+                            "costCurrency": {
+                                "USD": 0.05,
+                                "LRD": 10
+                            }
+                        },
+                        {
+                            "productName": "$0.50-40mins-50MB-1Day",
+                            "cost": 0.50,
+                            "productId": 1443,
+                            "categoryId": 22,
+                            "categoryName": "DYO",
+                            "description": "Get 30 mins to calls MTN numbers,10 mins calls to Other networks,50MB Data + 20 SMS to all MTN numbers. Press 1 to confirm 2 to cancel.",
+                            "validityDays": 1,
+                            "type": "Combo",
+                            "validityHours": 24,
+                            "costCurrency": {
+                                "USD": 0.50,
+                                "LRD": 91.54
+                            }
+                        },
+                        {
+                            "productName": "100LD-36mins-48hrs",
+                            "cost": 0.55,
+                            "productId": 244,
+                            "categoryId": 229,
+                            "categoryName": "Voice Bundle",
+                            "description": "Get 26 mins to call MTN numbers,10 mins to call all networks, 100sms onnet to MTN numbers and 20MB data, valid for 48hrs.",
+                            "validityDays": 2,
+                            "type": "Voice",
+                            "validityHours": 48,
+                            "costCurrency": {
+                                "USD": 0.55,
+                                "LRD": 100
+                            }
+                        },
+                        {
+                            "productName": "$0.20-120MB-3days-Whatsapp",
+                            "cost": 0.20,
+                            "productId": 1349,
+                            "categoryId": 249,
+                            "categoryName": "Whatsapp Only",
+                            "description": "You have selected $0.20 120MB Whatsapp Package valid 3 days.",
+                            "validityDays": 3,
+                            "type": "Data",
+                            "validityHours": 72,
+                            "costCurrency": {
+                                "USD": 0.20,
+                                "LRD": 36.62
+                            }
+                        },
+                        {
+                            "productName": "$50 - 60GB",
+                            "cost": 50,
+                            "productId": 40,
+                            "categoryId": 8,
+                            "categoryName": "Monthly",
+                            "description": "You have selected $50 - 60GB Package valid 30 days.",
+                            "validityDays": 30,
+                            "type": "Data",
+                            "validityHours": 720,
+                            "costCurrency": {
+                                "USD": 50,
+                                "LRD": 9154.18
+                            }
+                        },
+                        {
+                            "productName": "$0.50 - 400MB - 1Day",
+                            "cost": 0.5,
+                            "productId": 17,
+                            "categoryId": 158,
+                            "categoryName": "Daily",
+                            "description": "You have selected $0.50 - 400MB Package valid 24hrs.",
+                            "validityDays": 1,
+                            "type": "Data",
+                            "validityHours": 24,
+                            "costCurrency": {
+                                "USD": 0.5,
+                                "LRD": 91.54
+                            }
+                        },
+                        {
+                            "productName": "$0.50-350MB-7days-Whatsapp",
+                            "cost": 0.50,
+                            "productId": 1351,
+                            "categoryId": 249,
+                            "categoryName": "Whatsapp Only",
+                            "description": "You have selected $0.50 350MB Whatsapp Package valid 7 days.",
+                            "validityDays": 7,
+                            "type": "Data",
+                            "validityHours": 168,
+                            "costCurrency": {
+                                "USD": 0.50,
+                                "LRD": 91.54
+                            }
+                        },
+                        {
+                            "productName": "$5 - 3.3GB",
+                            "cost": 5,
+                            "productId": 34,
+                            "categoryId": 8,
+                            "categoryName": "Monthly",
+                            "description": "You have selected $5 - 3.3GB Package valid 30 days.",
+                            "validityDays": 30,
+                            "type": "Data",
+                            "validityHours": 720,
+                            "costCurrency": {
+                                "USD": 5,
+                                "LRD": 915.42
+                            }
+                        },
+                        {
+                            "productName": "$0.20-120MB-3days-Facebook",
+                            "cost": 0.20,
+                            "productId": 1436,
+                            "categoryId": 289,
+                            "categoryName": "Facebook Only",
+                            "description": "You have selected $0.20 120MB facebook Package valid 3 days.",
+                            "validityDays": 3,
+                            "type": "Data",
+                            "validityHours": 72,
+                            "costCurrency": {
+                                "USD": 0.20,
+                                "LRD": 36.62
+                            }
+                        },
+                        {
+                            "productName": "150LD-53mins-3days",
+                            "cost": 0.82,
+                            "productId": 13,
+                            "categoryId": 229,
+                            "categoryName": "Voice Bundle",
+                            "description": "Get 38 mins calls to MTN numbers, 15 mins calls to all networks plus 50MB data and 100SMS valid for 3 days.",
+                            "validityDays": 3,
+                            "type": "Voice",
+                            "validityHours": 72,
+                            "costCurrency": {
+                                "USD": 0.82,
+                                "LRD": 150
+                            }
+                        },
+                        {
+                            "productName": "$30 - 40GB",
+                            "cost": 30,
+                            "productId": 39,
+                            "categoryId": 8,
+                            "categoryName": "Monthly",
+                            "description": "You have selected $30 - 40GB Package valid 30 days.",
+                            "validityDays": 30,
+                            "type": "Data",
+                            "validityHours": 720,
+                            "costCurrency": {
+                                "USD": 30,
+                                "LRD": 5492.51
+                            }
+                        },
+                        {
+                            "productName": "40LD-12mins-24hrs",
+                            "cost": 0.22,
+                            "productId": 1723,
+                            "categoryId": 229,
+                            "categoryName": "Voice Bundle",
+                            "description": "Get 10 mins calls to MTN numbers and 2mins calls to all networks and 30 SMS onnet for 24hrs",
+                            "validityDays": 1,
+                            "type": "Voice",
+                            "validityHours": 24,
+                            "costCurrency": {
+                                "USD": 0.22,
+                                "LRD": 40
+                            }
+                        },
+                        {
+                            "productName": "$0.05-25MB-1day-Facebook",
+                            "cost": 0.05,
+                            "productId": 1438,
+                            "categoryId": 289,
+                            "categoryName": "Facebook Only",
+                            "description": "You have selected $0.05 25MB facebook Package valid 1 day.",
+                            "validityDays": 1,
+                            "type": "Data",
+                            "validityHours": 24,
+                            "costCurrency": {
+                                "USD": 0.05,
+                                "LRD": 9.15
+                            }
+                        },
+                        {
+                            "productName": "$20-Prestige",
+                            "cost": 20,
+                            "productId": 349,
+                            "categoryId": 162,
+                            "categoryName": "Prestige bundles(30 days)",
+                            "description": "14.5GB,400mins-MTN,200mins-all networks,35mins-Int'l + more",
+                            "validityDays": 30,
+                            "type": "Combo",
+                            "validityHours": 720,
+                            "costCurrency": {
+                                "USD": 20,
+                                "LRD": 3661.67
+                            }
+                        },
+                        {
+                            "productName": "$50-Prestige",
+                            "cost": 50,
+                            "productId": 350,
+                            "categoryId": 162,
+                            "categoryName": "Prestige bundles(30 days)",
+                            "description": "35GB,700mins-MTN,700mins-all networks,120mins-Int'l + more",
+                            "validityDays": 30,
+                            "type": "Combo",
+                            "validityHours": 720,
+                            "costCurrency": {
+                                "USD": 50,
+                                "LRD": 9154.18
+                            }
+                        },
+                        {
+                            "productName": "10LD-15MB-24hrs",
+                            "cost": 0.05,
+                            "productId": 367,
+                            "categoryId": 228,
+                            "categoryName": "Data Bundle",
+                            "description": "Get 15MB of data to browse the internet valid for 24hrs.",
+                            "validityDays": 1,
+                            "type": "Data",
+                            "validityHours": 24,
+                            "costCurrency": {
+                                "USD": 0.05,
+                                "LRD": 10
+                            }
+                        },
+                        {
+                            "productName": "$2 - 1GB",
+                            "cost": 2,
+                            "productId": 33,
+                            "categoryId": 8,
+                            "categoryName": "Monthly",
+                            "description": "You have selected $2 - 1GB Package valid 30 days.",
+                            "validityDays": 30,
+                            "type": "Data",
+                            "validityHours": 720,
+                            "costCurrency": {
+                                "USD": 2,
+                                "LRD": 366.17
+                            }
+                        },
+                        {
+                            "productName": "$10-12GB-10Days",
+                            "cost": 10,
+                            "productId": 21,
+                            "categoryId": 6,
+                            "categoryName": "Weekly",
+                            "description": "You have selected $10-12GB Package valid 7 days.",
+                            "validityDays": 10,
+                            "type": "Data",
+                            "validityHours": 240,
+                            "costCurrency": {
+                                "USD": 10,
+                                "LRD": 1830.84
+                            }
+                        },
+                        {
+                            "productName": "$1-500MB-3Days",
+                            "cost": 1,
+                            "productId": 18,
+                            "categoryId": 158,
+                            "categoryName": "Daily",
+                            "description": "You have selected $1-500MB Package valid 3Days.",
+                            "validityDays": 3,
+                            "type": "Data",
+                            "validityHours": 72,
+                            "costCurrency": {
+                                "USD": 1,
+                                "LRD": 183.08
+                            }
+                        },
+                        {
+                            "productName": "$20-Prepaid-Offer",
+                            "cost": 20,
+                            "productId": 1274,
+                            "categoryId": 227,
+                            "categoryName": "EBU HVC Packages",
+                            "description": "Get 450 mins to MTN, 250 mins to other networks, Unlimited onnet sms,250 all-net sms, 35mins int'l(Canada/USA) and 16GB for $20 valid 30 days",
+                            "validityDays": 30,
+                            "type": "Combo",
+                            "validityHours": 720,
+                            "costCurrency": {
+                                "USD": 20,
+                                "LRD": 3661.67
+                            }
+                        },
+                        {
+                            "productName": "$1-1GB-24hrs",
+                            "cost": 1,
+                            "productId": 1537,
+                            "categoryId": 238,
+                            "categoryName": "Suprise of the Day",
+                            "description": "Are you want to purchase {0} Package Suprise promo?\\\\nSelect",
+                            "validityDays": 1,
+                            "type": "Data",
+                            "validityHours": 24,
+                            "costCurrency": {
+                                "USD": 1,
+                                "LRD": 183.08
+                            }
+                        },
+                        {
+                            "productName": "$20 - 21GB",
+                            "cost": 20,
+                            "productId": 38,
+                            "categoryId": 8,
+                            "categoryName": "Monthly",
+                            "description": "You have selected $20 - 21GB Package valid 30 days.",
+                            "validityDays": 30,
+                            "type": "Data",
+                            "validityHours": 720,
+                            "costCurrency": {
+                                "USD": 20,
+                                "LRD": 3661.67
+                            }
+                        },
+                        {
+                            "productName": "$10 - 10GB",
+                            "cost": 10,
+                            "productId": 36,
+                            "categoryId": 8,
+                            "categoryName": "Monthly",
+                            "description": "You have selected $10 - 10GB Package valid 30 days.",
+                            "validityDays": 30,
+                            "type": "Data",
+                            "validityHours": 720,
+                            "costCurrency": {
+                                "USD": 10,
+                                "LRD": 1830.84
+                            }
+                        },
+                        {
+                            "productName": "$0.35-100MB-1Hr",
+                            "cost": 0,
+                            "productId": 1881,
+                            "categoryId": 158,
+                            "categoryName": "Daily",
+                            "description": "You have selected $0.35-100MB Package valid 24hrs.",
+                            "validityDays": 0,
+                            "type": "Data",
+                            "validityHours": 0,
+                            "costCurrency": {
+                                "USD": 0,
+                                "LRD": 0.00
+                            }
+                        },
+                        {
+                            "productName": "$0.10-5mins-4sms-24hrs",
+                            "cost": 0.10,
+                            "productId": 1471,
+                            "categoryId": 288,
+                            "categoryName": "DYOFallback",
+                            "description": "You have less than $1.00, activate 0.10cent offer to get 5mins (On-net), 4sms valid 24HRS. Please enter 1 to confirm and 2 to cancel",
+                            "validityDays": 1,
+                            "type": "Combo",
+                            "validityHours": 24,
+                            "costCurrency": {
+                                "USD": 0.10,
+                                "LRD": 18.31
+                            }
+                        }
+                    ],
+                    "success": true,
+                    "message": "",
+                    "statusCode": 0,
+                    "transactionId": null
+                }
+                """;
+        return ResponseEntity.ok().body(successResponse);
     }
 }
