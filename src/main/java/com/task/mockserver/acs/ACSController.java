@@ -1,5 +1,7 @@
 package com.task.mockserver.acs;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -513,7 +515,7 @@ public class ACSController {
                     "transactionId": "0"
                 }
                 """;
-        return ResponseEntity.ok().body(notEligibleResponse);
+        return ResponseEntity.ok().body(successResponse);
     }
 
     @PostMapping(value = "/v1.2/SelfSimService/UpdateAlternateNumber", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -571,7 +573,7 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.3/Products/Bundles", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> productBundles() {
+    public ResponseEntity<?> productBundles(@RequestBody Object request) {
         String response = """
                 {
                     "data": [
@@ -594,7 +596,31 @@ public class ACSController {
                     "transactionId": null
                 }
                 """;
-        return ResponseEntity.ok().body(response);
+
+        String emptyDataResponse = """
+                {
+                    "data": [],
+                    "success": true,
+                    "message": "",
+                    "statusCode": 0,
+                    "transactionId": null
+                }
+                """;
+
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root = mapper.valueToTree(request);
+        JsonNode filters = root.get("filters");
+        boolean shouldReturnEmpty = false;
+
+        if (filters != null && filters.has("Type")) {
+            JsonNode typeNode = filters.get("Type");
+            if (typeNode.isNull()) {
+                shouldReturnEmpty = true;
+            }
+        }
+
+        String responseBody = shouldReturnEmpty ? emptyDataResponse : response;
+        return ResponseEntity.ok().body(responseBody);
     }
 
     @GetMapping(value = "/v1.3/Balance/all/{msisdn}", produces = MediaType.APPLICATION_JSON_VALUE)
