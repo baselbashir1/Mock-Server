@@ -43,17 +43,22 @@ public class OptasiaController {
                                         "maturityDuration": 3650,
                                         "dueOffsetInDays": 0
                                     }
-                                },
-                                 {
-                                    "offerClass": "FIXED-B",
-                                    "offerName": "USD010-B",
-                                    "advanceOfferId": "3jSfpNx-B",
+                                }
+                            ]
+                        },
+                        {
+                            "commodityType": "BUNDLE",
+                            "loanOffers": [
+                                {
+                                    "offerClass": "FIXED-BUNDLE",
+                                    "offerName": "USD010-BUNDLE",
+                                    "advanceOfferId": "3jSfpNx-BUNDLE",
                                     "currencyCode": "USD",
                                     "principalAmount": 0.1,
                                     "setupFees": 0.01,
                                     "commodityType": "BUNDLE",
                                     "loanPlanId": "1",
-                                    "loanPlanName": "Standard Plan-B",
+                                    "loanPlanName": "Standard Plan-BUNDLE",
                                     "maturityDetails": {
                                         "maturityDuration": 3650,
                                         "dueOffsetInDays": 0
