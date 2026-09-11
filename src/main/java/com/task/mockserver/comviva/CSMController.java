@@ -12,7 +12,7 @@ public class CSMController {
 
     // http://172.25.10.111:8087/AFL/activationReq
     @PostMapping(value = "/AFL/activationReq", produces = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<?> payment(@RequestBody Object body) {
+    public ResponseEntity<?> subscribe(@RequestBody String body) {
         String response = """
                 <ocsResponse>
                     <serviceType></serviceType>
