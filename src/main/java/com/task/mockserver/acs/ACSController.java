@@ -735,4 +735,17 @@ public class ACSController {
                 """;
         return ResponseEntity.ok().body(successResponse);
     }
+
+    @PostMapping(value = "/v1.3/AirtimeDataTransfer/Subscribe", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> airtimeTransfer() {
+        String successResponse = """
+                {
+                    "success": true,
+                    "responseMessage": "You have successfully activated Data and Airtime transfer service on your number.",
+                    "responseCode": null,
+                    "data": null
+                }
+                """;
+        return ResponseEntity.ok().body(successResponse);
+    }
 }
