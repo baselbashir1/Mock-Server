@@ -1531,6 +1531,20 @@ public class DCLMController {
                     }
                 ]
                 """;
+
+        String errorResponse = """
+                {
+                    "name": "NotFound",
+                    "message": "Page not found",
+                    "code": 404,
+                    "className": "not-found",
+                    "data": {
+                        "url": "/v1/reservation/partyInteractionManagement/v1/partyInteraction?publicIdentifier=593003498&type=SIMChangeRequest&status=completed&offset=0&limit=10&sort=-interactionDate.startDateTime"
+                    },
+                    "errors": {}
+                }
+                """;
+        
         return ResponseEntity.ok().body(response);
     }
 }
