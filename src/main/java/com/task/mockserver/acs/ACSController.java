@@ -737,11 +737,21 @@ public class ACSController {
     }
 
     @PostMapping(value = "/v1.3/AirtimeDataTransfer/Subscribe", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> airtimeTransfer() {
+    public ResponseEntity<?> airtimeTransfer(@RequestHeader("Lang") String lang) {
+        System.out.println(lang);
         String successResponse = """
                 {
                     "success": true,
                     "responseMessage": "You have successfully activated Data and Airtime transfer service on your number.",
+                    "responseCode": null,
+                    "data": null
+                }
+                """;
+
+        String failureResponse = """
+                {
+                    "success": false,
+                    "responseMessage": "Subscription already exists",
                     "responseCode": null,
                     "data": null
                 }
