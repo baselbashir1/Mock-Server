@@ -736,24 +736,67 @@ public class ACSController {
         return ResponseEntity.ok().body(successResponse);
     }
 
-    @PostMapping(value = "/v1.3/AirtimeDataTransfer/Subscribe", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/v1.3/AirtimeDataTransfer/AirtimeTransfer", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> airtimeTransfer(@RequestHeader("Lang") String lang) {
         System.out.println(lang);
         String successResponse = """
                 {
                     "success": true,
-                    "responseMessage": "You have successfully activated Data and Airtime transfer service on your number.",
+                    "responseMessage": "Y’ello! You have successfully transferred 10USD to 231555243375. Beneficiary will be notified via SMS. Thanks for sharing.",
+                    "responseCode": 200,
+                    "data": {
+                        "transactionId": "5609001xxxxxx"
+                    }
+                }
+                """;
+
+        String insufficientResponse = """
+                {
+                    "success": false,
+                    "responseMessage": "Y'ello, You have insufficient Airtime to complete this transaction. Please top-up your Account and try again.",
                     "responseCode": null,
                     "data": null
                 }
                 """;
 
-        String failureResponse = """
+        String blockedResponse = """
                 {
                     "success": false,
-                    "responseMessage": "Subscription already exists",
+                    "responseMessage": "Your account is blocked.",
                     "responseCode": null,
                     "data": null
+                }
+                """;
+
+        String sameSenderResponse = """
+                {
+                    "success": false,
+                    "responseMessage": "Sender and receiver cannot be the same",
+                    "responseCode": null,
+                    "data": null
+                }
+                """;
+
+        String errorResponse = """
+                {
+                    "success": false,
+                    "responseMessage": "A system error occurred. Kindly check and try again",
+                    "responseCode": 502,
+                    "data": null
+                }
+                """;
+
+        String badRequestResponse = """
+                {
+                    "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+                    "title": "One or more validation errors occurred.",
+                    "status": 400,
+                    "errors": {
+                        "Amount": [
+                            "Amount must be greater than zero."
+                        ]
+                    },
+                    "traceId": "00-e43188a43bcf0d90783c05b96ca0133c-55654240244aa68d-01"
                 }
                 """;
         return ResponseEntity.ok().body(successResponse);
